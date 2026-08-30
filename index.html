@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>VoltLift — Electric Forklift Sales, Service & Rentals</title>
+<meta name="description" content="Sales, service, rentals, batteries and spare parts for electric forklifts. On-site support, 24/7 breakdown attendance and AMC care plans. Get a quote on WhatsApp.">
+<meta name="theme-color" content="#f2f1ea">
+<meta property="og:title" content="VoltLift — Electric Forklift Sales, Service & Rentals">
+<meta property="og:description" content="Electric forklifts from 1.5–5 T. Sales, rentals, AMC care plans, batteries & 24/7 breakdown support. Calculate your diesel savings online.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ffc400'/%3E%3Cpath d='M6 24v-9h10v9M8 15V9h7M22 5v18M22 26h6v-3.5' stroke='%23141414' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='11.5' cy='25' r='3.4' fill='%23141414'/%3E%3Ccircle cx='19' cy='26' r='2.4' fill='%23141414'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- ============ SEO STRUCTURED DATA (helps Google Maps & rich results) ============ -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"LocalBusiness",
+      "@id":"#business",
+      "name":"VoltLift Electric Forklifts",
+      "description":"Sales, service, rentals, batteries and spare parts for electric forklifts. On-site support and 24/7 breakdown attendance.",
+      "telephone":"+919999999999",
+      "priceRange":"₹₹",
+      "address":{"@type":"PostalAddress","streetAddress":"Plot 12, Industrial Estate","addressLocality":"Your City","postalCode":"400001","addressCountry":"IN"},
+      "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"19:00"}]
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"How much does an electric forklift cost?","acceptedAnswer":{"@type":"Answer","text":"It depends on capacity and battery type. New 1.5–3 T machines sit in the mid-to-high lakhs, while certified pre-owned units cost significantly less. Send your requirement on WhatsApp for a same-day indicative quote."}},
+        {"@type":"Question","name":"How long does the battery run on one charge?","acceptedAnswer":{"@type":"Answer","text":"A standard traction battery comfortably runs a full 6–8 hour shift. Lithium-ion packs also support opportunity charging during breaks, so the truck never leaves the floor."}},
+        {"@type":"Question","name":"Is electric really cheaper than diesel?","acceptedAnswer":{"@type":"Answer","text":"Typically 30–45% lower running cost once fuel, service and consumables are counted. Use the savings calculator on this page with your own hours and fuel price for a personalised estimate."}},
+        {"@type":"Question","name":"Do you service at our premises?","acceptedAnswer":{"@type":"Answer","text":"Yes. Our service vans are stocked with fast-moving spares and cover the city and nearby industrial belts. Major jobs are handled at our workshop with free pickup and drop on care plans."}},
+        {"@type":"Question","name":"Can we rent instead of buying?","acceptedAnswer":{"@type":"Answer","text":"Yes — day, week, month or multi-year rentals with transparent rates, plus short-notice standby machines. Rent-to-own is available on select units."}},
+        {"@type":"Question","name":"How fast do you attend a breakdown?","acceptedAnswer":{"@type":"Answer","text":"Same-day attendance within the city for care-plan customers, 24/7 guaranteed response on the Care 24/7 plan, and best-effort callouts for all our customers."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+</script>
+
+<style>
+/* ============ TOKENS & BASE ============ */
+:root{
+  --ink:#141414;
+  --paper:#f2f1ea;
+  --paper2:#e9e7dd;
+  --yellow:#ffc400;
+  --green:#25d366;
+  --err:#ff5d45;
+  --disp:'Big Shoulders Display','Archivo',sans-serif;
+  --body:'Archivo',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --pad:clamp(20px,4vw,48px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:16px;line-height:1.55;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -webkit-tap-highlight-color:transparent;
+}
+body::after{
+  content:'';position:fixed;inset:0;z-index:200;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+}
+::selection{background:var(--yellow);color:var(--ink)}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+a{color:inherit}
+button{font-family:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+.disp{font-family:var(--disp);text-transform:uppercase;letter-spacing:.01em}
+.hl{background:var(--yellow);color:var(--ink);padding:0 .1em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.kicker{font:600 11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.ksq{width:10px;height:10px;background:var(--yellow);border:2px solid var(--ink);flex:none}
+.h2{font-weight:800;font-size:clamp(2.2rem,5vw,4rem);line-height:.94;margin-top:16px}
+.sec{padding:clamp(60px,9vw,110px) 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:44px;margin-bottom:clamp(36px,5vw,60px)}
+.sec-note{max-width:340px;font-size:15px;color:rgba(20,20,20,.72);border-left:2px solid var(--ink);padding-left:18px}
+.hazard{height:12px;border-block:2px solid var(--ink);
+  background:repeating-linear-gradient(-45deg,var(--yellow) 0 14px,var(--ink) 14px 28px)}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease var(--d,0s),transform .7s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+
+/* ============ BUTTONS ============ */
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer;
+  font:600 13.5px/1 var(--body);text-transform:uppercase;letter-spacing:.07em;
+  padding:15px 22px;border:2px solid var(--ink);transition:transform .15s,box-shadow .15s,background .15s,color .15s}
+.btn svg{width:17px;height:17px;flex:none}
+.btn-yellow{background:var(--yellow);color:var(--ink);box-shadow:6px 6px 0 var(--ink)}
+.btn-ink{background:var(--ink);color:var(--paper);box-shadow:6px 6px 0 var(--yellow)}
+.btn-ghost{background:transparent;color:var(--ink)}
+.btn-yellow:active,.btn-ink:active{transform:translate(6px,6px);box-shadow:0 0 0 var(--ink)}
+.btn-sm{padding:12px 16px;font-size:12px}
+
+@media (hover:hover) and (pointer:fine){
+  .btn-yellow:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--ink)}
+  .btn-ink:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--yellow)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .nav a:hover::after{transform:scaleX(1)}
+  .hdr-tel:hover{color:#8a6d00}
+  .svc:hover::before{transform:scaleY(1)}
+  .svc-head:hover .svc-title{transform:translateX(8px)}
+  .svc-wa:hover svg{transform:translate(3px,-3px)}
+  .tab:hover{background:var(--paper2)}
+  .crow:hover{transform:translateX(6px)}
+  .foot-nav a:hover{color:var(--yellow)}
+  .wa-float:hover span{max-width:150px;margin-left:11px}
+  .tape-track:hover{animation-play-state:paused}
+  .ubtn:hover{background:var(--yellow)}
+}
+
+/* ============ HEADER ============ */
+.hdr{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:2px solid var(--ink)}
+.hdr-in{display:flex;align-items:center;gap:24px;height:70px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.logo-mark{width:38px;height:38px;background:var(--yellow);border:2px solid var(--ink);display:grid;place-items:center;flex:none}
+.logo-mark svg{width:26px;height:26px}
+.logo-txt b{display:block;font-family:var(--disp);font-weight:800;font-size:21px;letter-spacing:.04em;line-height:1;white-space:nowrap}
+.logo-txt span{font:500 8.5px/1 var(--mono);letter-spacing:.26em;text-transform:uppercase;color:rgba(20,20,20,.6);white-space:nowrap}
+.nav{display:flex;gap:20px;margin-left:auto}
+.nav a{font:600 12px/1 var(--mono);letter-spacing:.1em;text-decoration:none;position:relative;padding:8px 0;white-space:nowrap}
+.nav a::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:3px;background:var(--yellow);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.hdr-tel{font:600 13px var(--mono);text-decoration:none;white-space:nowrap}
+.menu-btn{display:none;background:none;border:2px solid var(--ink);width:46px;height:46px;cursor:pointer;place-items:center;margin-left:auto;flex:none}
+.menu-btn svg{width:20px;height:20px}
+.mnav{position:fixed;top:72px;left:0;right:0;z-index:49;background:var(--paper);border-bottom:2px solid var(--ink);
+  transform:translateY(-115%);transition:transform .35s cubic-bezier(.2,.7,.2,1);max-height:calc(100dvh - 72px);overflow:auto}
+.mnav.open{transform:none}
+.mnav > a{display:block;padding:16px var(--pad);font-family:var(--disp);font-weight:700;font-size:1.4rem;
+  text-transform:uppercase;text-decoration:none;border-top:1px solid rgba(20,20,20,.15)}
+.mnav-cta{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:18px var(--pad) 24px;border-top:1px solid rgba(20,20,20,.15)}
+.mnav-cta .btn{justify-content:center}
+
+/* ============ HERO ============ */
+.hero{display:grid;grid-template-columns:1.02fr .98fr;min-height:calc(100vh - 72px);min-height:calc(100svh - 72px);border-bottom:2px solid var(--ink)}
+.hero-copy{padding:clamp(24px,5vw,72px);display:flex;flex-direction:column;justify-content:center;gap:26px;border-right:2px solid var(--ink);min-width:0}
+.h1{font-weight:900;font-size:clamp(2.55rem,7vw,6.6rem);line-height:.9;overflow-wrap:break-word}
+.lede{font-size:clamp(15px,1.3vw,17.5px);max-width:46ch;color:rgba(20,20,20,.8)}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
+.chips li{font:600 10.5px/1 var(--mono);letter-spacing:.12em;border:2px solid var(--ink);
+  padding:9px 12px;display:inline-flex;align-items:center;gap:8px;background:var(--paper)}
+.chips li::before{content:'';width:7px;height:7px;background:var(--yellow);border:1.5px solid var(--ink)}
+.cta-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:6px}
+
+.stage{position:relative;min-height:460px;overflow:hidden;background:var(--paper);user-select:none;-webkit-user-select:none}
+.stage::before{content:'';position:absolute;inset:14px;border:1.5px solid rgba(20,20,20,.25);pointer-events:none;z-index:1}
+.corner{position:absolute;width:13px;height:13px;z-index:3;pointer-events:none}
+.corner.tl{top:7px;left:7px;border-top:2px solid var(--ink);border-left:2px solid var(--ink)}
+.corner.tr{top:7px;right:7px;border-top:2px solid var(--ink);border-right:2px solid var(--ink)}
+.corner.bl{bottom:7px;left:7px;border-bottom:2px solid var(--ink);border-left:2px solid var(--ink)}
+.corner.br{bottom:7px;right:7px;border-bottom:2px solid var(--ink);border-right:2px solid var(--ink)}
+.stage-fallback{position:absolute;inset:0;display:grid;place-items:center;z-index:1;
+  font:500 11px var(--mono);letter-spacing:.2em;color:rgba(20,20,20,.5);text-align:center;padding:20px}
+.stage-ui{position:absolute;inset:0;z-index:2;pointer-events:none;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(14px,2.5vw,22px)}
+.su-top,.su-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.fig{background:var(--paper);border:1.5px solid var(--ink);padding:6px 9px;font:600 9.5px/1 var(--mono);letter-spacing:.14em;white-space:nowrap}
+.ubtn{pointer-events:auto;background:var(--paper);border:2px solid var(--ink);cursor:pointer;
+  font:600 10.5px/1 var(--mono);letter-spacing:.1em;padding:12px 14px;box-shadow:3px 3px 0 var(--ink);
+  transition:background .15s,transform .1s,box-shadow .1s;min-height:40px}
+.ubtn.on{background:var(--yellow)}
+.ubtn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+.su-zoom{display:flex;gap:8px}
+.su-zoom .ubtn{min-width:44px}
+.su-btns{display:flex;gap:8px;flex-wrap:wrap}
+.hint{position:absolute;left:50%;bottom:86px;transform:translateX(-50%);z-index:3;pointer-events:none;
+  display:flex;align-items:center;gap:10px;background:var(--paper);border:1.5px solid var(--ink);
+  padding:9px 13px;font:600 10px/1 var(--mono);letter-spacing:.16em;transition:opacity .5s;white-space:nowrap}
+.hint svg{width:20px;height:20px;flex:none}
+.hint.hide{opacity:0}
+
+/* ============ TAPE ============ */
+.tape{background:var(--ink);border-bottom:2px solid var(--ink);overflow:hidden;padding:13px 0}
+.tape-track{display:flex;width:max-content;animation:mq 26s linear infinite}
+.tgroup{display:flex;align-items:center;gap:38px;padding-right:38px}
+.tgroup span{font-family:var(--disp);font-weight:700;font-size:1.3rem;letter-spacing:.06em;color:var(--yellow);white-space:nowrap}
+.dm{width:9px;height:9px;background:var(--yellow);transform:rotate(45deg);flex:none}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ============ STATS ============ */
+.stats{border-bottom:2px solid var(--ink)}
+.stats-row{display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between;gap:30px;padding:clamp(34px,4.5vw,54px) 0}
+.stat{border-left:2px solid var(--ink);padding-left:26px;min-width:0}
+.num{font-weight:800;font-size:clamp(2.2rem,4vw,3.7rem);line-height:1;display:block}
+.num i{font-style:normal;color:#b38900}
+.lbl{display:block;font:500 10.5px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(20,20,20,.6);margin-top:10px;max-width:170px}
+
+/* ============ SERVICES / FAQ ACCORDION ============ */
+.svc{position:relative;border-top:2px solid var(--ink);overflow:hidden}
+.svc:last-of-type{border-bottom:2px solid var(--ink)}
+.svc::before{content:'';position:absolute;inset:0;background:var(--yellow);
+  transform:scaleY(0);transform-origin:top;transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.svc.open::before{transform:scaleY(1)}
+.svc-head{position:relative;z-index:1;width:100%;display:grid;grid-template-columns:60px 1fr auto 40px;
+  align-items:center;gap:18px;padding:24px 6px;background:none;border:0;text-align:left;cursor:pointer;color:inherit}
+.svc-num{font:600 13px var(--mono);color:rgba(20,20,20,.55)}
+.svc-title{font-weight:700;font-size:clamp(1.35rem,2.6vw,2.2rem);line-height:1;transition:transform .25s;overflow-wrap:break-word}
+.plus{position:relative;width:38px;height:38px;border:2px solid var(--ink);flex:none;transition:transform .35s;background:var(--paper)}
+.plus::before,.plus::after{content:'';position:absolute;left:50%;top:50%;background:var(--ink);transform:translate(-50%,-50%)}
+.plus::before{width:14px;height:2px}
+.plus::after{width:2px;height:14px}
+.svc.open .plus{transform:rotate(45deg)}
+.svc-body{position:relative;z-index:1;display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.4,0,.2,1)}
+.svc.open .svc-body{grid-template-rows:1fr}
+.svc-body>div{overflow:hidden}
+.svc-body p{max-width:680px;padding:0 6px 0 84px;font-size:15px;color:rgba(20,20,20,.85)}
+.svc-wa{display:inline-flex;align-items:center;gap:8px;margin:16px 6px 28px 84px;
+  font:600 11.5px var(--mono);letter-spacing:.12em;text-decoration:none;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.svc-wa svg{width:14px;height:14px;transition:transform .2s;flex:none}
+
+/* ============ SAVINGS CALCULATOR ============ */
+.calc{display:grid;grid-template-columns:1fr 1.05fr;border:2px solid var(--ink);background:var(--paper)}
+.calc-in{padding:clamp(24px,3.5vw,44px);border-right:2px solid var(--ink);min-width:0}
+.crng{margin-bottom:26px}
+.crng-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
+.crng-head label{font:600 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:rgba(20,20,20,.6)}
+.crng-head output{font:600 13.5px var(--mono);background:var(--yellow);border:2px solid var(--ink);padding:4px 9px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.rng{width:100%;-webkit-appearance:none;appearance:none;height:30px;background:transparent;cursor:pointer}
+.rng::-webkit-slider-runnable-track{height:10px;border:2px solid var(--ink);background:var(--paper2)}
+.rng::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;background:var(--yellow);border:2px solid var(--ink);margin-top:-9px;box-shadow:2px 2px 0 var(--ink)}
+.rng::-moz-range-track{height:6px;border:2px solid var(--ink);background:var(--paper2)}
+.rng::-moz-range-thumb{width:20px;height:20px;background:var(--yellow);border:2px solid var(--ink);border-radius:0;box-shadow:2px 2px 0 var(--ink)}
+.rng:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.calc-note{font:400 11px/1.7 var(--mono);color:rgba(20,20,20,.55);margin-top:4px}
+.calc-out{background:var(--ink);color:var(--paper);padding:clamp(24px,3.5vw,44px);display:flex;flex-direction:column;gap:20px;min-width:0}
+.cbar-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font:600 11px var(--mono);letter-spacing:.14em;margin-bottom:8px}
+.cbar-top b{color:var(--paper);font-size:14px;font-variant-numeric:tabular-nums;letter-spacing:0}
+.cbar-track{height:12px;border:2px solid rgba(242,241,234,.5)}
+.cbar-track i{display:block;height:100%;background:var(--yellow);width:0;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.csave-lab{font:600 10px var(--mono);letter-spacing:.22em;color:rgba(242,241,234,.55)}
+.csave-num{display:block;font-weight:900;font-size:clamp(2.4rem,4.5vw,4rem);line-height:1.05;margin:10px 0 12px;padding:.04em .14em;font-variant-numeric:tabular-nums}
+.csave-sub{font:400 12.5px/1.7 var(--mono);color:rgba(242,241,234,.7);display:block}
+.csave-sub b{color:var(--yellow);font-weight:600}
+.calc-out .btn{justify-content:center;margin-top:auto}
+
+/* ============ FLEET ============ */
+.fleet-grid{display:grid;grid-template-columns:1.1fr .9fr;border:2px solid var(--ink)}
+.fleet-left{padding:clamp(24px,3.5vw,44px);min-width:0}
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+.tab{background:transparent;border:2px solid var(--ink);padding:13px 16px;cursor:pointer;
+  font:600 12px var(--mono);letter-spacing:.1em;transition:background .15s,color .15s;min-height:44px}
+.tab.on{background:var(--ink);color:var(--paper)}
+.spec{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:13px 2px;border-bottom:1px solid rgba(20,20,20,.18)}
+.spec span{font:600 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(20,20,20,.55);flex:none}
+.spec b{font-size:14.5px;font-weight:600;font-variant-numeric:tabular-nums;text-align:right;overflow-wrap:anywhere}
+.fnote2{font:400 11px var(--mono);color:rgba(20,20,20,.55);margin-top:16px}
+.fleet-right{background:var(--ink);color:var(--paper);border-left:2px solid var(--ink);
+  padding:clamp(24px,3.5vw,44px);display:flex;flex-direction:column;gap:22px;min-width:0}
+.fcode{font-weight:900;font-size:clamp(2.6rem,5vw,4.6rem);line-height:.9;color:var(--yellow)}
+.fuse{font-size:14px;color:rgba(242,241,234,.75);min-height:2.6em}
+.meter .mrow{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
+.mlab{font:600 10px var(--mono);letter-spacing:.16em;color:rgba(242,241,234,.55)}
+.mval{font:600 12.5px var(--mono);color:var(--yellow);text-align:right}
+.track{height:10px;border:1.5px solid rgba(242,241,234,.5)}
+.track i{display:block;height:100%;background:var(--yellow);width:0;transition:width .8s cubic-bezier(.2,.7,.2,1)}
+.fleet-right .btn{margin-top:auto;width:100%;justify-content:center}
+
+/* ============ AMC CARE PLANS ============ */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--ink);margin-top:18px}
+.plan{padding:clamp(24px,3vw,36px);border-right:2px solid var(--ink);display:flex;flex-direction:column;gap:18px;position:relative;background:var(--paper);min-width:0}
+.plan:last-child{border-right:0}
+.plan-tag{font:600 11px var(--mono);letter-spacing:.18em;color:rgba(20,20,20,.6)}
+.plan-price{font-family:var(--disp);font-weight:800;font-size:clamp(2rem,3vw,2.9rem);line-height:1}
+.plan-price em{font:500 12px var(--mono);font-style:normal;color:rgba(20,20,20,.55)}
+.plan-list{list-style:none;display:flex;flex-direction:column;gap:11px;flex:1}
+.plan-list li{display:flex;gap:10px;font-size:14px;line-height:1.45}
+.plan-list li::before{content:'✓';font:700 10px/19px var(--mono);width:19px;height:19px;background:var(--yellow);border:2px solid var(--ink);text-align:center;flex:none;margin-top:2px}
+.plan .btn{justify-content:center}
+.plan-note{font:400 10.5px var(--mono);color:rgba(20,20,20,.5)}
+.plan-hot{background:var(--ink);color:var(--paper)}
+.plan-hot .plan-tag{color:var(--yellow)}
+.plan-hot .plan-price em{color:rgba(242,241,234,.55)}
+.plan-hot .plan-list li{color:rgba(242,241,234,.85)}
+.plan-hot .plan-list li::before{border-color:var(--yellow)}
+.plan-hot .plan-note{color:rgba(242,241,234,.5)}
+.plan-ribbon{position:absolute;top:-15px;left:22px;background:var(--yellow);border:2px solid var(--ink);
+  font:700 10px var(--mono);letter-spacing:.16em;padding:5px 10px;z-index:2}
+
+/* ============ PROCESS ============ */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink)}
+.step{position:relative;padding:30px 28px 0 0}
+.step::before{content:'';position:absolute;top:-8px;left:0;width:13px;height:13px;background:var(--yellow);border:2px solid var(--ink)}
+.step b{display:block;font:600 11px var(--mono);letter-spacing:.16em;color:rgba(20,20,20,.5);margin-bottom:12px}
+.step h3{font-family:var(--disp);font-weight:700;font-size:1.4rem;text-transform:uppercase;margin-bottom:8px}
+.step p{font-size:14px;color:rgba(20,20,20,.75)}
+
+/* ============ CONTACT ============ */
+.contact{background:var(--ink);color:var(--paper)}
+.contact .kicker{color:var(--paper)}
+.contact .ksq{border-color:var(--yellow)}
+.contact .h2{color:var(--paper)}
+.contact .sec-note{color:rgba(242,241,234,.65);border-color:var(--yellow)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(44px,6vw,84px);align-items:start}
+.crows{display:flex;flex-direction:column;gap:14px;margin:34px 0}
+.crow{display:flex;align-items:center;gap:16px;text-decoration:none;padding:6px 0;transition:transform .2s;min-width:0}
+.crow .ic{width:44px;height:44px;border:1.5px solid rgba(242,241,234,.3);display:grid;place-items:center;flex:none}
+.crow .ic svg{width:18px;height:18px;stroke:var(--yellow);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.clab{display:block;font:600 9.5px var(--mono);letter-spacing:.2em;color:rgba(242,241,234,.5)}
+.crow b{font-size:15.5px;font-weight:600;overflow-wrap:anywhere}
+.obadge{font:700 9px var(--mono);letter-spacing:.14em;padding:2px 6px;border:1.5px solid currentColor;margin-left:8px;vertical-align:1px}
+.obadge.is-open{color:#39c457}
+.obadge.is-closed{color:rgba(242,241,234,.45)}
+.field{margin-bottom:18px}
+.field label{display:block;font:600 10.5px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:rgba(242,241,234,.55);margin-bottom:9px}
+.field input,.field select,.field textarea{
+  width:100%;background:transparent;border:2px solid #3d3d3d;color:var(--paper);
+  padding:13px 14px;font:400 15px var(--body);transition:border-color .15s;border-radius:0}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--yellow);outline:none}
+.field ::placeholder{color:rgba(242,241,234,.35)}
+.field select{appearance:none;-webkit-appearance:none;cursor:pointer;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23f2f1ea' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 14px center}
+.field select option{color:#141414;background:#fff}
+.field textarea{resize:vertical;min-height:96px}
+input.bad,select.bad{border-color:var(--err)!important}
+.ferr{display:none;font:500 11px var(--mono);color:#ff9a8a;margin-top:7px}
+.ferr.show{display:block}
+.fnote{font:400 12px/1.6 var(--mono);color:rgba(242,241,234,.5);margin-top:14px}
+
+/* ============ FOOTER ============ */
+.foot{background:var(--ink);color:var(--paper)}
+.foot-in{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;padding:46px 0 26px;flex-wrap:wrap}
+.foot .fn{font-family:var(--disp);font-weight:800;font-size:1.7rem;text-transform:uppercase;line-height:1;overflow-wrap:anywhere}
+.foot .ft{font:500 10px var(--mono);letter-spacing:.24em;color:rgba(242,241,234,.5);margin-top:8px;text-transform:uppercase}
+.foot-nav{display:flex;gap:22px;flex-wrap:wrap}
+.foot-nav a{font:600 11.5px var(--mono);letter-spacing:.1em;text-decoration:none;color:rgba(242,241,234,.75);padding:6px 0}
+.foot-base{border-top:1px solid rgba(242,241,234,.15);padding:18px 0 26px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font:400 11px var(--mono);color:rgba(242,241,234,.45)}
+
+/* ============ FLOATING WHATSAPP ============ */
+.wa-float{position:fixed;right:22px;bottom:calc(22px + env(safe-area-inset-bottom));z-index:80;display:flex;align-items:center;
+  background:var(--green);color:#fff;border:2px solid var(--ink);box-shadow:5px 5px 0 rgba(20,20,20,.85);
+  padding:15px;text-decoration:none;animation:pop .5s cubic-bezier(.2,.9,.3,1.4) .8s backwards}
+.wa-float svg{width:26px;height:26px;fill:#fff;flex:none}
+.wa-float span{max-width:0;overflow:hidden;white-space:nowrap;font:600 11.5px var(--mono);letter-spacing:.12em;
+  transition:max-width .35s ease,margin .35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(24px) scale(.8)}}
+
+/* ============ TOAST ============ */
+#toast{position:fixed;left:50%;bottom:32px;transform:translate(-50%,20px);z-index:100;
+  background:var(--ink);color:var(--paper);border:2px solid var(--yellow);padding:14px 22px;
+  font:500 12.5px var(--mono);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;max-width:min(90vw,560px);text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+#toast.bad{border-color:var(--err)}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1200px){ .nav{gap:16px} }
+@media (max-width:1120px){ .hdr-tel{display:none} }
+@media (max-width:1020px){
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero-copy{border-right:0;border-bottom:2px solid var(--ink)}
+  .stage{min-height:0;height:clamp(340px,100vw,480px)}
+}
+@media (max-width:980px){
+  .plans{grid-template-columns:1fr;margin-top:22px}
+  .plan{border-right:0;border-bottom:2px solid var(--ink)}
+  .plan:last-child{border-bottom:0}
+  .calc{grid-template-columns:1fr}
+  .calc-in{border-right:0;border-bottom:2px solid var(--ink)}
+}
+@media (max-width:880px){
+  .nav,#hdrWa{display:none}
+  .menu-btn{display:grid}
+}
+@media (max-width:760px){
+  html{scroll-padding-top:84px}
+  .sec-head{flex-direction:column;align-items:flex-start;gap:20px}
+  .stats-row{grid-template-columns:1fr 1fr;gap:26px 22px}
+  .stat{padding-left:18px}
+  .svc-head{grid-template-columns:44px 1fr 38px;gap:12px;padding:20px 4px}
+  .svc-tag{display:none}
+  .svc-body p{padding:0 4px 0 60px;font-size:14.5px}
+  .svc-wa{margin:14px 4px 26px 60px}
+  .fleet-grid{grid-template-columns:1fr}
+  .fleet-right{border-left:0;border-top:2px solid var(--ink)}
+  .steps{grid-template-columns:1fr;border-top:0;border-left:2px solid var(--ink);margin-left:4px}
+  .step{padding:0 0 34px 26px}
+  .step::before{top:2px;left:-8px}
+  .step:last-child{padding-bottom:6px}
+  .contact-grid{grid-template-columns:1fr}
+  .crows{margin-top:0}
+  .field input,.field select,.field textarea{font-size:16px}
+  #toast{bottom:calc(88px + env(safe-area-inset-bottom))}
+  .hint{bottom:80px}
+  .crng{margin-bottom:22px}
+}
+@media (max-width:600px){
+  .tgroup{gap:26px;padding-right:26px}
+  .tgroup span{font-size:1.05rem}
+  .cta-row{flex-direction:column;align-items:stretch}
+  .cta-row .btn{justify-content:center}
+  .su-top .fig:last-child{display:none}
+  .hero-copy{gap:22px}
+  .plan-ribbon{left:16px}
+}
+@media (max-width:420px){
+  .h1{font-size:clamp(2.3rem,11.5vw,2.8rem)}
+  .btn{padding:15px 18px;font-size:12.5px}
+  .btn-sm{padding:12px 14px}
+  .stats-row{gap:22px 14px}
+  .stat{padding-left:14px}
+  .num{font-size:2rem}
+  .lbl{font-size:9.5px}
+  .wa-float{right:14px;padding:13px}
+  .wa-float svg{width:24px;height:24px}
+  .hint{letter-spacing:.1em;padding:8px 10px}
+  .foot .fn{font-size:1.4rem}
+  .spec{gap:10px}
+  .chips li{padding:8px 10px}
+  .calc-out{padding:22px 18px}
+}
+@media (max-height:500px) and (orientation:landscape) and (max-width:1020px){
+  .hero-copy{padding:24px var(--pad)}
+  .stage{height:min(64vh,440px)}
+  .hint{bottom:70px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .tape-track{animation:none}
+  .wa-float{animation:none}
+  .rv{opacity:1;transform:none;transition:none}
+  .track i,.cbar-track i{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="logo" href="#top">
+      <span class="logo-mark">
+        <svg viewBox="0 0 28 28" fill="none" stroke="#141414" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 19v-6h8v6M5 13V8h5M18 5v17M18 25h8v-2.5"/>
+          <circle cx="7.5" cy="22.5" r="3"/><circle cx="14.5" cy="24" r="2"/>
+        </svg>
+      </span>
+      <span class="logo-txt"><b data-cfg="name">VoltLift</b><span data-cfg="tagline">Sales · Service · Rentals</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#savings">Savings</a>
+      <a href="#fleet">Fleet</a>
+      <a href="#amc">Care Plans</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="hdr-tel" data-tel href="#"><b data-cfg="phoneDisplay">+91 98XXX XXXXX</b></a>
+    <a id="hdrWa" class="btn btn-ink btn-sm" data-wa="Hi {name}! I'd like a quote for an electric forklift." href="#">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      WhatsApp
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+<nav class="mnav" id="mnav" aria-label="Mobile">
+  <a href="#services">Services</a>
+  <a href="#savings">Savings Calculator</a>
+  <a href="#fleet">Fleet</a>
+  <a href="#amc">Care Plans</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contact">Contact</a>
+  <div class="mnav-cta">
+    <a class="btn btn-yellow" data-tel href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call Now
+    </a>
+    <a class="btn btn-ink" data-wa="Hi {name}! I'd like to enquire about electric forklifts." href="#">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</nav>
+
+<main id="top">
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="kicker rv"><span class="ksq"></span>Electric Forklifts — Sales · Service · Rentals</p>
+      <h1 class="disp h1 rv" style="--d:.06s">Heavy lifting, <span class="hl">zero</span> emissions.</h1>
+      <p class="lede rv" style="--d:.12s">We sell, service and rent electric forklifts for warehouses, factories and logistics yards that run all day — and can't afford downtime.</p>
+      <ul class="chips rv" style="--d:.18s">
+        <li>1.5 – 5 T capacity</li>
+        <li>Lithium ready</li>
+        <li>On-site service</li>
+      </ul>
+      <div class="cta-row rv" style="--d:.24s">
+        <a class="btn btn-yellow" data-wa="Hi {name}! I'd like a quote for an electric forklift." href="#">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Get a Quote
+        </a>
+        <a class="btn btn-ghost" href="#savings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 7H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Calculate Your Savings
+        </a>
+      </div>
+    </div>
+
+    <div class="stage" id="stage3d">
+      <div class="stage-fallback" id="stageFallback">LOADING 3D…</div>
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="stage-ui">
+        <div class="su-top">
+          <span class="fig">FIG. 01 — CPD-25 · 2.5 T</span>
+          <span class="fig">3D · INTERACTIVE</span>
+        </div>
+        <div class="su-bottom">
+          <div class="su-btns">
+            <button class="ubtn" id="liftBtn">LIFT DEMO</button>
+            <button class="ubtn on" id="rotBtn" aria-pressed="true">AUTO-ROTATE</button>
+          </div>
+          <div class="su-zoom">
+            <button class="ubtn" id="zin" aria-label="Zoom in">+</button>
+            <button class="ubtn" id="zout" aria-label="Zoom out">&minus;</button>
+          </div>
+        </div>
+      </div>
+      <div class="hint" id="hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M7 8l-4 4 4 4M17 8l4 4-4 4"/></svg>
+        DRAG TO ROTATE
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TAPE ================= -->
+  <div class="tape" aria-hidden="true">
+    <div class="tape-track">
+      <div class="tgroup">
+        <span>New &amp; Used Sales</span><i class="dm"></i><span>24/7 Service</span><i class="dm"></i>
+        <span>Rentals</span><i class="dm"></i><span>Lithium Batteries</span><i class="dm"></i>
+        <span>Spare Parts</span><i class="dm"></i><span>Operator Training</span><i class="dm"></i>
+      </div>
+      <div class="tgroup">
+        <span>New &amp; Used Sales</span><i class="dm"></i><span>24/7 Service</span><i class="dm"></i>
+        <span>Rentals</span><i class="dm"></i><span>Lithium Batteries</span><i class="dm"></i>
+        <span>Spare Parts</span><i class="dm"></i><span>Operator Training</span><i class="dm"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= STATS ================= -->
+  <section class="stats">
+    <div class="wrap stats-row">
+      <div class="stat rv"><span class="num disp"><span data-count="500">0</span><i>+</i></span><span class="lbl">Forklifts serviced &amp; counting</span></div>
+      <div class="stat rv" style="--d:.08s"><span class="num disp"><span data-count="12">0</span></span><span class="lbl">Years on warehouse floors</span></div>
+      <div class="stat rv" style="--d:.16s"><span class="num disp"><span data-count="24">0</span><i>/7</i></span><span class="lbl">Breakdown support</span></div>
+      <div class="stat rv" style="--d:.24s"><span class="num disp"><span data-count="40">0</span><i>%</i></span><span class="lbl">Lower running cost than diesel</span></div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section class="sec" id="services">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div>
+          <p class="kicker"><span class="ksq"></span>01 — What we do</p>
+          <h2 class="disp h2">One contractor.<br>The whole fleet.</h2>
+        </div>
+        <p class="sec-note">Sales to spares — every touchpoint of electric forklift ownership, handled by the same team that answers your call.</p>
+      </div>
+
+      <div class="svc rv">
+        <button class="svc-head" aria-expanded="false">
+          <span class="svc-num">01</span><span class="svc-title disp">New &amp; Used Sales</span><span class="svc-tag">1.5 – 5 T</span><span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="svc-body"><div>
+          <p>Brand-new and certified pre-owned electric forklifts from 1.5 to 5 tonnes. Battery, charger and warranty handled end to end — plus buy-back when you upgrade.</p>
+          <a class="svc-wa" data-svc="sales" href="#">ENQUIRE ON WHATSAPP <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        </div></div>
+      </div>
+
+      <div class="svc rv">
+        <button class="svc-head" aria-expanded="false">
+          <span class="svc-num">02</span><span class="svc-title disp">Maintenance &amp; Repairs</span><span class="svc-tag">24/7 Callout</span><span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="svc-body"><div>
+          <p>Scheduled preventive maintenance and round-the-clock breakdown attendance. Our mechanics come to your floor with a van stocked with fast-moving spares.</p>
+          <a class="svc-wa" data-svc="service" href="#">ENQUIRE ON WHATSAPP <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        </div></div>
+      </div>
+
+      <div class="svc rv">
+        <button class="svc-head" aria-expanded="false">
+          <span class="svc-num">03</span><span class="svc-title disp">Batteries &amp; Chargers</span><span class="svc-tag">Li-ion Ready</span><span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="svc-body"><div>
+          <p>Traction battery supply, lithium conversions, water topping and cell health checks — plus correctly sized charger installation for your power supply.</p>
+          <a class="svc-wa" data-svc="battery" href="#">ENQUIRE ON WHATSAPP <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        </div></div>
+      </div>
+
+      <div class="svc rv">
+        <button class="svc-head" aria-expanded="false">
+          <span class="svc-num">04</span><span class="svc-title disp">Rentals &amp; Leases</span><span class="svc-tag">Day → Year</span><span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="svc-body"><div>
+          <p>Day, month or multi-year rentals with transparent rates — and short-notice standby machines so your floor never stops when a unit goes down.</p>
+          <a class="svc-wa" data-svc="rental" href="#">ENQUIRE ON WHATSAPP <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        </div></div>
+      </div>
+
+      <div class="svc rv">
+        <button class="svc-head" aria-expanded="false">
+          <span class="svc-num">05</span><span class="svc-title disp">Spare Parts &amp; Tyres</span><span class="svc-tag">All Makes</span><span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="svc-body"><div>
+          <p>Genuine parts, PU / rubber / pneumatic tyres, wheels and chains for all major electric forklift makes — sourced fast and fitted by our team.</p>
+          <a class="svc-wa" data-svc="parts" href="#">ENQUIRE ON WHATSAPP <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        </div></div>
+      </div>
+
+      <div class="svc rv">
+        <button class="svc-head" aria-expanded="false">
+          <span class="svc-num">06</span><span class="svc-title disp">Operator Training</span><span class="svc-tag">Certified</span><span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="svc-body"><div>
+          <p>Certified safety and handling training conducted on your own site, with complete documentation ready for audits and insurance checks.</p>
+          <a class="svc-wa" data-svc="training" href="#">ENQUIRE ON WHATSAPP <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SAVINGS CALCULATOR ================= -->
+  <section class="sec" id="savings" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div>
+          <p class="kicker"><span class="ksq"></span>02 — The numbers</p>
+          <h2 class="disp h2">What diesel is<br>really costing you.</h2>
+        </div>
+        <p class="sec-note">Drag the sliders to match your operation. The estimate updates live — then send your numbers straight to us on WhatsApp.</p>
+      </div>
+
+      <div class="calc rv">
+        <div class="calc-in">
+          <div class="crng">
+            <div class="crng-head"><label for="rHours">Operating hours per day</label><output id="oHours" for="rHours">8 hrs</output></div>
+            <input type="range" class="rng" id="rHours" min="2" max="16" step="1" value="8">
+          </div>
+          <div class="crng">
+            <div class="crng-head"><label for="rDays">Working days per year</label><output id="oDays" for="rDays">300</output></div>
+            <input type="range" class="rng" id="rDays" min="100" max="360" step="5" value="300">
+          </div>
+          <div class="crng">
+            <div class="crng-head"><label for="rDiesel">Diesel price (₹ / litre)</label><output id="oDiesel" for="rDiesel">₹92</output></div>
+            <input type="range" class="rng" id="rDiesel" min="60" max="130" step="1" value="92">
+          </div>
+          <div class="crng">
+            <div class="crng-head"><label for="rPower">Electricity tariff (₹ / kWh)</label><output id="oPower" for="rPower">₹8.5</output></div>
+            <input type="range" class="rng" id="rPower" min="4" max="14" step="0.5" value="8.5">
+          </div>
+          <p class="calc-note">Estimate for a 2.5 T class forklift: ≈2.6 L diesel/hr vs ≈4.5 kWh/hr, including service costs. Indicative only — your free site survey gives exact figures.</p>
+        </div>
+        <div class="calc-out">
+          <div>
+            <div class="cbar-top"><span>DIESEL FORKLIFT / YEAR</span><b id="vDiesel">₹0</b></div>
+            <div class="cbar-track"><i id="bDiesel" style="background:#ff5d45"></i></div>
+          </div>
+          <div>
+            <div class="cbar-top"><span>ELECTRIC FORKLIFT / YEAR</span><b id="vElec">₹0</b></div>
+            <div class="cbar-track"><i id="bElec"></i></div>
+          </div>
+          <div>
+            <span class="csave-lab">YOU SAVE EVERY YEAR</span>
+            <span class="csave-num disp hl" id="vSave">₹0</span>
+            <span class="csave-sub"><b id="vFive">₹0</b> over 5 years · <b id="vCo2">0</b> tonnes CO₂ avoided per year</span>
+          </div>
+          <a class="btn btn-yellow" id="calcWa" href="#">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Send My Numbers on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FLEET ================= -->
+  <section class="sec" id="fleet" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div>
+          <p class="kicker"><span class="ksq"></span>03 — The fleet</p>
+          <h2 class="disp h2">Sized for your aisle.</h2>
+        </div>
+        <p class="sec-note">Three core electric models covering 80% of warehouse jobs. Every unit is commissioned, load-tested and handed over ready to work.</p>
+      </div>
+
+      <div class="fleet-grid rv">
+        <div class="fleet-left">
+          <div class="tabs" role="tablist" aria-label="Forklift models">
+            <button class="tab" data-model="cpd15">CPD-15 · 1.5 T</button>
+            <button class="tab on" data-model="cpd25">CPD-25 · 2.5 T</button>
+            <button class="tab" data-model="cpd35">CPD-35 · 3.5 T</button>
+          </div>
+          <div class="spec-list">
+            <div class="spec"><span>Nominal capacity</span><b data-f="cap">–</b></div>
+            <div class="spec"><span>Max lift height</span><b data-f="lift">–</b></div>
+            <div class="spec"><span>Battery</span><b data-f="batt">–</b></div>
+            <div class="spec"><span>Fast charge</span><b data-f="chg">–</b></div>
+            <div class="spec"><span>Turning radius</span><b data-f="turn">–</b></div>
+            <div class="spec"><span>Service weight</span><b data-f="wt">–</b></div>
+          </div>
+          <p class="fnote2">All models: Li-ion standard · AC drive · 3-stage mast · CE build.</p>
+        </div>
+        <div class="fleet-right">
+          <h3 class="disp fcode" data-f="code">CPD-25</h3>
+          <p class="fuse" data-f="use">–</p>
+          <div class="meter">
+            <div class="mrow"><span class="mlab">LOAD CAPACITY</span><span class="mval" data-f="cap">–</span></div>
+            <div class="track"><i id="barCap"></i></div>
+          </div>
+          <div class="meter">
+            <div class="mrow"><span class="mlab">LIFT HEIGHT</span><span class="mval" data-f="lift">–</span></div>
+            <div class="track"><i id="barLift"></i></div>
+          </div>
+          <a id="fleetWa" class="btn btn-yellow" href="#">Get this model on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AMC CARE PLANS ================= -->
+  <section class="sec" id="amc" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div>
+          <p class="kicker"><span class="ksq"></span>04 — Care plans</p>
+          <h2 class="disp h2">Downtime is expensive.<br>Uptime is a plan.</h2>
+        </div>
+        <p class="sec-note">Fixed-cost annual maintenance contracts. Pick the response time your floor needs — upgrade or cancel at renewal.</p>
+      </div>
+
+      <div class="plans rv">
+        <!-- DEMO prices — edit these to your real AMC rates -->
+        <article class="plan">
+          <span class="plan-tag">CARE BASIC</span>
+          <div class="plan-price disp">₹9,999<em> /year</em></div>
+          <ul class="plan-list">
+            <li>2 preventive services per year</li>
+            <li>Battery water topping &amp; terminal care</li>
+            <li>10% off spare parts &amp; consumables</li>
+            <li>Standard callout response</li>
+          </ul>
+          <a class="btn btn-ghost" data-plan="basic" href="#">Choose Basic</a>
+        </article>
+
+        <article class="plan plan-hot">
+          <span class="plan-ribbon">MOST POPULAR</span>
+          <span class="plan-tag">CARE STANDARD</span>
+          <div class="plan-price disp">₹18,999<em> /year</em></div>
+          <ul class="plan-list">
+            <li>4 preventive services per year</li>
+            <li>Priority response within 24 hrs</li>
+            <li>15% off parts, tyres &amp; batteries</li>
+            <li>Quarterly battery health report</li>
+            <li>Free pickup–drop for workshop jobs</li>
+          </ul>
+          <a class="btn btn-yellow" data-plan="standard" href="#">Choose Standard</a>
+        </article>
+
+        <article class="plan">
+          <span class="plan-tag">CARE 24/7</span>
+          <div class="plan-price disp">₹34,999<em> /year</em></div>
+          <ul class="plan-list">
+            <li>Everything in Care Standard</li>
+            <li>Guaranteed breakdown attendance, 24/7</li>
+            <li>Standby machine during major repairs*</li>
+            <li>Annual load test &amp; certification</li>
+            <li>Dedicated service hotline</li>
+          </ul>
+          <a class="btn btn-ghost" data-plan="premium" href="#">Choose 24/7</a>
+        </article>
+      </div>
+      <p class="plan-note rv" style="margin-top:14px">*Subject to availability. Prices shown are indicative — final quote after a free site survey.</p>
+    </div>
+  </section>
+
+  <!-- ================= PROCESS ================= -->
+  <section class="sec" id="process" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div>
+          <p class="kicker"><span class="ksq"></span>05 — How it works</p>
+          <h2 class="disp h2">From call to floor in days.</h2>
+        </div>
+        <p class="sec-note">No long forms, no waiting weeks. Most quotes go out within 24 hours of a site visit.</p>
+      </div>
+      <div class="steps rv">
+        <div class="step">
+          <b>STEP 01</b><h3>Call or WhatsApp</h3>
+          <p>Tell us what you lift, how high and how many hours a day. Photos of your aisle help.</p>
+        </div>
+        <div class="step">
+          <b>STEP 02</b><h3>Free site survey</h3>
+          <p>We measure aisles, racking, loads, duty cycles and your charging points.</p>
+        </div>
+        <div class="step">
+          <b>STEP 03</b><h3>Quote in 24 hrs</h3>
+          <p>Transparent pricing with buy, rent and service options side by side.</p>
+        </div>
+        <div class="step">
+          <b>STEP 04</b><h3>Delivery &amp; support</h3>
+          <p>Commissioning, operator briefing and an AMC from day one. We stay reachable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="sec" id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div>
+          <p class="kicker"><span class="ksq"></span>06 — FAQ</p>
+          <h2 class="disp h2">Asked on every<br>site visit.</h2>
+        </div>
+        <p class="sec-note">Straight answers. If your question isn't here, message us — a human replies, not a bot.</p>
+      </div>
+
+      <div class="svc rv">
+        <button class="svc-head" aria-expanded="false">
+          <span class="svc-num">Q1</span><span class="svc-title disp">How much does an electric forklift cost?</span><span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="svc-body"><div>
+          <p>It depends on capacity and battery type. New 1.5–3 T machines typically sit in the mid-to-high lakhs, while certified pre-owned units cost significantly less. Send your requirement on WhatsApp for a same-day indicative quote.</p>
+          <a class="svc-wa" data-wa="Hi {name}! What would an electric forklift cost for my requirement?" href="#">ASK FOR A QUOTE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        </div></div>
+      </div>
+
+      <div class="svc rv">
+        <button class="svc-head" aria-expanded="false">
+          <span class="svc-num">Q2</span><span class="svc-title disp">How long does the battery run on one charge?</span><span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="svc-body"><div>
+          <p>A standard traction battery comfortably runs a full 6–8 hour shift. Lithium-ion packs also support opportunity charging during breaks, so the truck never leaves the floor for a top-up.</p>
+          <a class="svc-wa" data-wa="Hi {name}! I have a question about forklift batteries and charging." href="#">ASK ABOUT BATTERIES <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        </div></div>
+      </div>
+
+      <div class="svc rv">
+        <button class="svc-head" aria-expanded="false">
+          <span class="svc-num">Q3</span><span class="svc-title disp">Is electric really cheaper than diesel?</span><span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="svc-body"><div>
+          <p>Typically 30–45% lower running cost once fuel, service and consumables are counted. Use the savings calculator on this page with your own hours and fuel price for a personalised estimate.</p>
+          <a class="svc-wa" href="#savings">TRY THE CALCULATOR <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        </div></div>
+      </div>
+
+      <div class="svc rv">
+        <button class="svc-head" aria-expanded="false">
+          <span class="svc-num">Q4</span><span class="svc-title disp">Do you service at our premises?</span><span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="svc-body"><div>
+          <p>Yes. Our service vans are stocked with fast-moving spares and cover the city and nearby industrial belts. Major jobs are handled at our workshop — with free pickup and drop on care plans.</p>
+          <a class="svc-wa" data-svc="service" href="#">BOOK A SERVICE VISIT <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        </div></div>
+      </div>
+
+      <div class="svc rv">
+        <button class="svc-head" aria-expanded="false">
+          <span class="svc-num">Q5</span><span class="svc-title disp">Can we rent instead of buying?</span><span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="svc-body"><div>
+          <p>Yes — day, week, month or multi-year rentals with transparent rates, plus short-notice standby machines. Rent-to-own is available on select units if you'd rather test before committing.</p>
+          <a class="svc-wa" data-svc="rental" href="#">GET RENTAL RATES <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        </div></div>
+      </div>
+
+      <div class="svc rv">
+        <button class="svc-head" aria-expanded="false">
+          <span class="svc-num">Q6</span><span class="svc-title disp">How fast do you attend a breakdown?</span><span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="svc-body"><div>
+          <p>Same-day attendance within the city for care-plan customers, 24/7 guaranteed response on the Care 24/7 plan, and best-effort callouts for all our customers — we don't leave a loaded floor waiting.</p>
+          <a class="svc-wa" data-wa="Hi {name}! I have a breakdown and need urgent support for my forklift." href="#">URGENT SUPPORT <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact sec" id="contact">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div>
+          <p class="kicker"><span class="ksq"></span>07 — Contact</p>
+          <h2 class="disp h2">Tell us your load.<br>We'll bring the <span class="hl">machine.</span></h2>
+        </div>
+        <p class="sec-note">We reply on WhatsApp within business hours — usually much faster.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="rv">
+          <div class="crows">
+            <a class="crow" data-tel href="#">
+              <span class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+              <span><span class="clab">CALL US</span><b data-cfg="phoneDisplay">+91 98XXX XXXXX</b></span>
+            </a>
+            <a class="crow" data-wa="Hi {name}! I have a question about electric forklifts." href="#">
+              <span class="ic"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" style="fill:var(--yellow);stroke:none"/></svg></span>
+              <span><span class="clab">WHATSAPP</span><b>Chat with us directly</b></span>
+            </a>
+            <a class="crow" data-mail href="#">
+              <span class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></span>
+              <span><span class="clab">EMAIL</span><b data-cfg="email">sales@voltlift.in</b></span>
+            </a>
+            <div class="crow">
+              <span class="ic"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <span><span class="clab">WORKSHOP</span><b data-cfg="address">Plot 12, Industrial Estate, Your City</b></span>
+            </div>
+            <div class="crow">
+              <span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+              <span><span class="clab">HOURS<span id="openNow" class="obadge" aria-live="polite"></span></span><b data-cfg="hours">Mon–Sat · 9:00 AM – 7:00 PM</b></span>
+            </div>
+          </div>
+        </div>
+
+        <form id="quoteForm" class="rv" style="--d:.1s" novalidate>
+          <div class="field">
+            <label for="fName">Your name</label>
+            <input id="fName" type="text" placeholder="e.g. Rahul Sharma" autocomplete="name">
+            <span class="ferr" id="errName">Please enter your name.</span>
+          </div>
+          <div class="field">
+            <label for="fPhone">Phone / WhatsApp</label>
+            <input id="fPhone" type="tel" inputmode="tel" placeholder="e.g. +91 98765 43210" autocomplete="tel">
+            <span class="ferr" id="errPhone">Please enter a valid phone number.</span>
+          </div>
+          <div class="field">
+            <label for="fService">What do you need?</label>
+            <select id="fService">
+              <option value="" selected disabled>Select a service</option>
+              <option>Buy — new forklift</option>
+              <option>Buy — pre-owned forklift</option>
+              <option>Rent or lease</option>
+              <option>Service &amp; repair</option>
+              <option>AMC care plan</option>
+              <option>Batteries &amp; chargers</option>
+              <option>Spare parts / tyres</option>
+              <option>Operator training</option>
+              <option>Other</option>
+            </select>
+            <span class="ferr" id="errSvc">Please pick a service.</span>
+          </div>
+          <div class="field">
+            <label for="fMsg">Details (optional)</label>
+            <textarea id="fMsg" placeholder="Load weight, lift height, number of machines…"></textarea>
+          </div>
+          <button class="btn btn-yellow" type="submit" style="width:100%;justify-content:center">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Send via WhatsApp
+          </button>
+          <p class="fnote">Sending opens WhatsApp with your message pre-filled — just hit send.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<div class="hazard" aria-hidden="true"></div>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <div class="fn" data-cfg="nameFull">VoltLift Electric Forklifts</div>
+        <div class="ft" data-cfg="tagline">Sales · Service · Rentals</div>
+      </div>
+      <nav class="foot-nav" aria-label="Footer">
+        <a href="#services">Services</a><a href="#savings">Savings</a><a href="#fleet">Fleet</a><a href="#amc">Care Plans</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="foot-base">
+      <span>&copy; <span data-year>2025</span> <span data-cfg="nameFull">VoltLift Electric Forklifts</span>. All rights reserved.</span>
+      <span>Demo build — swap in your real name, number &amp; WhatsApp in the CONFIG block.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a class="wa-float" data-wa="Hi {name}! I'd like to enquire about electric forklifts." href="#" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  <span>CHAT WITH US</span>
+</a>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<!-- ================= UI SCRIPT ================= -->
+<script>
+(function(){
+  /* ============================================================
+     CONFIG — THE ONLY PLACE YOU NEED TO EDIT LATER.
+     whatsapp: country code + number, digits only (e.g. 919876543210)
+     ============================================================ */
+  const CONFIG = {
+    name:        "VoltLift",
+    nameFull:    "VoltLift Electric Forklifts",
+    tagline:     "Sales · Service · Rentals",
+    whatsapp:    "919999999999",               // ← your WhatsApp number here
+    phoneDisplay:"+91 98XXX XXXXX",
+    phone:       "+9198XXXXXXX",
+    email:       "sales@voltlift.in",
+    address:     "Plot 12, Industrial Estate, Your City 400001",
+    hours:       "Mon–Sat · 9:00 AM – 7:00 PM"
+  };
+
+  /* ---- apply text config ---- */
+  document.querySelectorAll('[data-cfg]').forEach(el=>{
+    const v = CONFIG[el.dataset.cfg]; if(v) el.textContent = v;
+  });
+  document.querySelectorAll('[data-year]').forEach(el=> el.textContent = new Date().getFullYear());
+
+  /* ---- WhatsApp + tel + mail links ---- */
+  function waHref(text){ return 'https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(text); }
+  function setWa(a, text){
+    text = text.replace(/\{name\}/g, CONFIG.nameFull);
+    a.setAttribute('href', waHref(text));
+    a.setAttribute('target','_blank'); a.setAttribute('rel','noopener');
+  }
+  document.querySelectorAll('[data-wa]').forEach(a=> setWa(a, a.getAttribute('data-wa')));
+  document.querySelectorAll('[data-tel]').forEach(a=> a.href = 'tel:'+CONFIG.phone.replace(/[^\d+]/g,''));
+  document.querySelectorAll('[data-mail]').forEach(a=> a.href = 'mailto:'+CONFIG.email);
+
+  /* ---- per-service WhatsApp enquiries ---- */
+  const SVC_WA = {
+    sales:   "I'm looking to buy an electric forklift. Can you recommend a model and share a quote?",
+    service: "I need maintenance / repair for my electric forklift. Can you arrange a service visit?",
+    battery: "I need help with forklift batteries / chargers (supply, replacement or lithium upgrade).",
+    rental:  "I'm interested in renting an electric forklift. Please share rates and availability.",
+    parts:   "I need spare parts / tyres for an electric forklift.",
+    training:"I'd like to book operator safety training for my team."
+  };
+  document.querySelectorAll('[data-svc]').forEach(a=> setWa(a, 'Hi {name}! ' + SVC_WA[a.dataset.svc]));
+
+  /* ---- AMC plan WhatsApp enquiries ---- */
+  const PLAN_WA = {
+    basic:    "Hi {name}! I'd like to subscribe to the Care Basic AMC plan. Please share details.",
+    standard: "Hi {name}! I'd like to subscribe to the Care Standard AMC plan. Please share details.",
+    premium:  "Hi {name}! I'd like to subscribe to the Care 24/7 AMC plan. Please share details."
+  };
+  document.querySelectorAll('[data-plan]').forEach(a=> setWa(a, PLAN_WA[a.dataset.plan]));
+
+  /* ---- toast ---- */
+  const toastEl = document.getElementById('toast');
+  function toast(msg, ok=true){
+    toastEl.textContent = msg;
+    toastEl.className = 'show' + (ok ? '' : ' bad');
+    clearTimeout(toastEl._h);
+    toastEl._h = setTimeout(()=> toastEl.className = '', 3600);
+  }
+
+  /* ---- mobile menu ---- */
+  const menuBtn = document.getElementById('menuBtn'), mnav = document.getElementById('mnav');
+  menuBtn.addEventListener('click', ()=>{
+    const open = mnav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  mnav.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> mnav.classList.remove('open')));
+
+  /* ---- reveal on scroll ---- */
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.14});
+  document.querySelectorAll('.rv').forEach(el=> io.observe(el));
+
+  /* ---- animated counters ---- */
+  const cio = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      cio.unobserve(e.target);
+      const el = e.target, end = +el.dataset.count, dur = 1400, t0 = performance.now();
+      (function frame(t){
+        const p = Math.min((t - t0)/dur, 1), ease = 1 - Math.pow(1-p, 3);
+        el.textContent = Math.round(end*ease);
+        if(p < 1) requestAnimationFrame(frame);
+      })(t0);
+    });
+  }, {threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(el=> cio.observe(el));
+
+  /* ---- accordions (services + FAQ share the same component) ---- */
+  document.querySelectorAll('.svc-head').forEach(head=>{
+    head.addEventListener('click', ()=>{
+      const item = head.parentElement, wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.svc.open').forEach(o=>{
+        o.classList.remove('open');
+        o.querySelector('.svc-head').setAttribute('aria-expanded','false');
+      });
+      if(!wasOpen){ item.classList.add('open'); head.setAttribute('aria-expanded','true'); }
+    });
+  });
+
+  /* ---- fleet selector ---- */
+  const FLEET = {
+    cpd15:{ code:'CPD-15', cap:'1,500 kg', lift:'3.0 m', batt:'48 V · 300 Ah Li-ion', chg:'0–80% in 1.5 h', turn:'1.72 m', wt:'2,650 kg',
+            capPct:30, liftPct:50, use:'Narrow aisles, mezzanines and light-duty docks where space is tight.' },
+    cpd25:{ code:'CPD-25', cap:'2,500 kg', lift:'4.5 m', batt:'80 V · 400 Ah Li-ion', chg:'0–80% in 1.2 h', turn:'1.98 m', wt:'3,880 kg',
+            capPct:50, liftPct:75, use:'The all-rounder — general warehouse work and busy loading bays.' },
+    cpd35:{ code:'CPD-35', cap:'3,500 kg', lift:'6.0 m', batt:'80 V · 500 Ah Li-ion', chg:'0–80% in 1.5 h', turn:'2.28 m', wt:'5,300 kg',
+            capPct:70, liftPct:100, use:'Heavy pallets, high racking and semi-outdoor yard work.' }
+  };
+  const fEls = {};
+  document.querySelectorAll('[data-f]').forEach(el=>{
+    (fEls[el.dataset.f] = fEls[el.dataset.f] || []).push(el);
+  });
+  const barCap = document.getElementById('barCap'), barLift = document.getElementById('barLift');
+  const fleetWa = document.getElementById('fleetWa');
+  function setVal(el, txt){
+    if(el.textContent === txt) return;
+    el.textContent = txt;
+    if(el.animate) el.animate([{opacity:0, transform:'translateY(8px)'},{opacity:1, transform:'translateY(0)'}], {duration:280, easing:'ease-out'});
+  }
+  function renderFleet(key){
+    const d = FLEET[key];
+    Object.keys(fEls).forEach(k=> fEls[k].forEach(el=> setVal(el, d[k] !== undefined ? d[k] : el.textContent)));
+    barCap.style.width  = d.capPct  + '%';
+    barLift.style.width = d.liftPct + '%';
+    setWa(fleetWa, 'Hi {name}! Please quote me for the '+d.code+' ('+d.cap+' capacity) electric forklift.');
+  }
+  document.querySelectorAll('.tab').forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab').forEach(t=> t.classList.remove('on'));
+      tab.classList.add('on');
+      renderFleet(tab.dataset.model);
+    });
+  });
+  renderFleet('cpd25');
+
+  /* ============================================================
+     SAVINGS CALCULATOR — diesel vs electric
+     Tune the constants below to match your real figures.
+     ============================================================ */
+  const REDUCE = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const CALC = {
+    dieselLph: 2.6,     // litres of diesel per hour
+    elecKwh:   4.5,     // kWh per hour
+    serviceD:  22000,   // diesel forklift annual service cost (₹)
+    serviceE:  7000,    // electric forklift annual service cost (₹)
+    co2PerL:   2.68     // kg CO₂ per litre of diesel
+  };
+  const $ = id => document.getElementById(id);
+  const rH = $('rHours'), rD = $('rDays'), rP = $('rDiesel'), rE = $('rPower');
+  const rupee = n => '₹' + Math.round(n).toLocaleString('en-IN');
+  function tween(el, to, fmt){
+    const from = el._v || 0; el._v = to;
+    if(REDUCE){ el.textContent = fmt(to); return; }
+    const t0 = performance.now(), dur = 450;
+    (function f(t){
+      const p = Math.min((t - t0)/dur, 1), e = 1 - Math.pow(1-p, 3);
+      el.textContent = fmt(from + (to - from)*e);
+      if(p < 1) requestAnimationFrame(f);
+    })(t0);
+  }
+  function calc(){
+    const h = +rH.value, d = +rD.value, dp = +rP.value, ep = +rE.value;
+    $('oHours').textContent  = h + ' hrs';
+    $('oDays').textContent   = d;
+    $('oDiesel').textContent = '₹' + dp;
+    $('oPower').textContent  = '₹' + ep;
+    const dy = h*d*CALC.dieselLph*dp + CALC.serviceD;
+    const ey = h*d*CALC.elecKwh*ep  + CALC.serviceE;
+    const sv = Math.max(dy - ey, 0);
+    $('bDiesel').style.width = '100%';
+    $('bElec').style.width   = Math.min(ey/dy*100, 100) + '%';
+    tween($('vDiesel'), dy, rupee);
+    tween($('vElec'),   ey, rupee);
+    tween($('vSave'),   sv, rupee);
+    tween($('vFive'),  sv*5, rupee);
+    tween($('vCo2'), h*d*CALC.dieselLph*CALC.co2PerL/1000, n => n.toFixed(1));
+    setWa($('calcWa'), 'Hi {name}! I used the savings calculator on your website: '
+      + h + ' hrs/day, ' + d + ' days/yr, diesel @ ₹' + dp + '/L, electricity @ ₹' + ep + '/kWh. '
+      + 'It estimates I could save about ' + rupee(sv) + ' a year by switching to electric. Please advise on the right model.');
+  }
+  [rH,rD,rP,rE].forEach(r=> r.addEventListener('input', calc));
+  calc();
+
+  /* ---- open / closed badge (matches CONFIG hours: Mon–Sat 9–7) ---- */
+  const openEl = $('openNow');
+  function updOpen(){
+    const n = new Date(), day = n.getDay(), h = n.getHours() + n.getMinutes()/60;
+    const open = day >= 1 && day <= 6 && h >= 9 && h < 19;
+    openEl.textContent = open ? 'OPEN NOW' : 'CLOSED';
+    openEl.className = 'obadge ' + (open ? 'is-open' : 'is-closed');
+  }
+  updOpen(); setInterval(updOpen, 60000);
+
+  /* ---- quote form → WhatsApp ---- */
+  const form = document.getElementById('quoteForm');
+  const fN = document.getElementById('fName'), fP = document.getElementById('fPhone'),
+        fS = document.getElementById('fService'), fM = document.getElementById('fMsg');
+  const eN = document.getElementById('errName'), eP = document.getElementById('errPhone'), eS = document.getElementById('errSvc');
+  [fN,fP,fS].forEach(i=> i.addEventListener('input', ()=>{
+    i.classList.remove('bad');
+    eN.classList.remove('show'); eP.classList.remove('show'); eS.classList.remove('show');
+  }));
+  form.addEventListener('submit', ev=>{
+    ev.preventDefault();
+    let ok = true;
+    if(fN.value.trim().length < 2){ fN.classList.add('bad'); eN.classList.add('show'); ok = false; }
+    if(fP.value.replace(/\D/g,'').length < 7){ fP.classList.add('bad'); eP.classList.add('show'); ok = false; }
+    if(!fS.value){ fS.classList.add('bad'); eS.classList.add('show'); ok = false; }
+    if(!ok){ toast('Please check the highlighted fields.', false); return; }
+    const text = 'Hello '+CONFIG.nameFull+'!\n'
+      + 'My name is '+fN.value.trim()+' ('+fP.value.trim()+').\n'
+      + 'I need: '+fS.value+'.\n'
+      + (fM.value.trim() ? 'Details: '+fM.value.trim() : '');
+    window.open(waHref(text), '_blank', 'noopener');
+    toast('Opening WhatsApp — your message is ready to send.');
+    form.reset();
+  });
+})();
+</script>
+
+<!-- ================= 3D FORKLIFT (Three.js) ================= -->
+<script type="module">
+import * as THREE from 'three';
+
+const container = document.getElementById('stage3d');
+const fallback  = document.getElementById('stageFallback');
+
+try{
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isSmall = Math.min(window.innerWidth || 9999, window.innerHeight || 9999) < 760;
+
+  const renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true, powerPreference:'high-performance' });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isSmall ? 1.8 : 2));
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.domElement.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;';
+  container.prepend(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.Fog(0xf2f1ea, 12, 24);
+
+  const camera = new THREE.PerspectiveCamera(33, 1, 0.1, 80);
+  const target = new THREE.Vector3(0.05, 1.0, 0);
+
+  scene.add(new THREE.HemisphereLight(0xffffff, 0xb9b4a4, 1.1));
+  const sun = new THREE.DirectionalLight(0xfff2dd, 2.2);
+  sun.position.set(5, 8, 4);
+  sun.castShadow = true;
+  sun.shadow.mapSize.set(isSmall ? 1024 : 2048, isSmall ? 1024 : 2048);
+  sun.shadow.camera.near = 1; sun.shadow.camera.far = 30;
+  sun.shadow.camera.left = -6; sun.shadow.camera.right = 6;
+  sun.shadow.camera.top  =  6; sun.shadow.camera.bottom = -6;
+  sun.shadow.normalBias = 0.03;
+  scene.add(sun);
+  const fill = new THREE.DirectionalLight(0xe6efff, 0.55);
+  fill.position.set(-6, 4, -5);
+  scene.add(fill);
+
+  function stripeTexture(){
+    const c = document.createElement('canvas'); c.width = c.height = 128;
+    const g = c.getContext('2d');
+    g.fillStyle = '#141414'; g.fillRect(0,0,128,128);
+    g.save(); g.translate(64,64); g.rotate(-Math.PI/4);
+    g.fillStyle = '#ffc400';
+    for(let x=-192; x<192; x+=44) g.fillRect(x,-192,22,384);
+    g.restore();
+    const t = new THREE.CanvasTexture(c);
+    t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(4,4);
+    t.colorSpace = THREE.SRGBColorSpace;
+    return t;
+  }
+  function labelTexture(){
+    const c = document.createElement('canvas'); c.width = 512; c.height = 256;
+    const g = c.getContext('2d');
+    g.fillStyle = '#f4f2ea'; g.fillRect(0,0,512,256);
+    g.strokeStyle = '#141414'; g.lineWidth = 14; g.strokeRect(10,10,492,236);
+    g.fillStyle = '#141414'; g.textAlign = 'center'; g.textBaseline = 'middle';
+    g.font = '900 110px Archivo, sans-serif';       g.fillText('48V', 256, 96);
+    g.font = '600 42px "IBM Plex Mono", monospace'; g.fillText('LITHIUM · 300Ah', 256, 196);
+    const t = new THREE.CanvasTexture(c);
+    t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return t;
+  }
+  const stripeTex = stripeTexture();
+
+  const ground = new THREE.Mesh(
+    new THREE.CircleGeometry(11, 72).rotateX(-Math.PI/2),
+    new THREE.MeshStandardMaterial({ color:0xe7e5da, roughness:1 })
+  );
+  ground.receiveShadow = true; scene.add(ground);
+
+  const band = new THREE.Mesh(
+    new THREE.RingGeometry(2.64, 2.98, 96).rotateX(-Math.PI/2),
+    new THREE.MeshBasicMaterial({ map: stripeTex })
+  );
+  band.position.y = 0.012; scene.add(band);
+  [[2.58,2.64],[2.98,3.04]].forEach(([a,b])=>{
+    const r = new THREE.Mesh(new THREE.RingGeometry(a,b,96).rotateX(-Math.PI/2),
+      new THREE.MeshBasicMaterial({ color:0x141414 }));
+    r.position.y = 0.014; scene.add(r);
+  });
+
+  function std(c,r,m){ return new THREE.MeshStandardMaterial({ color:c, roughness:r, metalness:m }); }
+  const M = {
+    yellow: std(0xffc400,.45,.1),  yellowDeep: std(0xdfa900,.55,.1),
+    steel:  std(0x33373b,.55,.45), dark:  std(0x1d2023,.6,.35),
+    seat:   std(0x232527,.85,0),   tire:  std(0x191a1c,.95,0),
+    wood:   std(0xb9884f,.8,0),    woodD: std(0x8a6238,.85,0),
+    band:   std(0x2b2d2f,.7,.2),
+    lens:   new THREE.MeshStandardMaterial({ color:0xfff3cf, emissive:0xffe9a8, emissiveIntensity:1 }),
+    red:    new THREE.MeshStandardMaterial({ color:0xff5148, emissive:0xff3b30, emissiveIntensity:.9 }),
+    green:  new THREE.MeshStandardMaterial({ color:0x39c457, emissive:0x2fb84e, emissiveIntensity:1.2 }),
+    beacon: new THREE.MeshStandardMaterial({ color:0xff9a1f, emissive:0xff7300, emissiveIntensity:1 })
+  };
+
+  function box(w,h,d,mat,x,y,z,rz=0){
+    const m = new THREE.Mesh(new THREE.BoxGeometry(w,h,d), mat);
+    m.position.set(x,y,z); m.rotation.z = rz;
+    m.castShadow = m.receiveShadow = true; return m;
+  }
+  function cyl(r,h,mat,x,y,z,rx=0,rz=0){
+    const m = new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,28), mat);
+    m.position.set(x,y,z); m.rotation.x = rx; m.rotation.z = rz;
+    m.castShadow = m.receiveShadow = true; return m;
+  }
+
+  const truck = new THREE.Group();
+  truck.position.x = -0.6;
+  scene.add(truck);
+
+  truck.add(box(2.10,0.52,1.00, M.yellow,     0.05,0.79,0));
+  truck.add(box(2.20,0.26,0.96, M.steel,      0.05,0.40,0));
+  truck.add(box(0.42,0.78,1.04, M.yellow,    -1.16,0.80,0));
+  truck.add(box(0.46,0.10,1.04, M.steel,     -1.16,1.24,0));
+  truck.add(box(0.90,0.16,1.00, M.yellowDeep, 0.62,1.13,0));
+
+  truck.add(box(0.44,0.10,0.46, M.seat, -0.10,1.11,0));
+  truck.add(box(0.10,0.44,0.46, M.seat, -0.33,1.32,0, 0.15));
+  truck.add(cyl(0.025,0.50, M.dark, 0.16,1.28,0, 0, 0.55));
+  const sw = new THREE.Group();
+  const swheel = new THREE.Mesh(new THREE.TorusGeometry(0.125,0.022,12,28), M.dark);
+  swheel.rotation.x = Math.PI/2; swheel.castShadow = true;
+  sw.add(swheel); sw.position.set(0.03,1.50,0); sw.rotation.z = 0.55;
+  truck.add(sw);
+
+  [[0.62,1.79,1.16],[-0.62,1.70,1.30]].forEach(([x,y,h])=>{
+    truck.add(box(0.07,h,0.07, M.steel, x,y, 0.44));
+    truck.add(box(0.07,h,0.07, M.steel, x,y,-0.44));
+  });
+  truck.add(box(1.50,0.07,1.04, M.yellow, 0.0,2.40,0));
+  truck.add(box(0.10,0.12,1.04, M.dark,   0.72,2.37,0));
+
+  truck.add(cyl(0.075,0.035, M.dark,   0.55,2.45,0.30));
+  truck.add(cyl(0.058,0.10, M.beacon, 0.55,2.52,0.30));
+  const beaconLight = new THREE.PointLight(0xff8c00, 0, 5, 2);
+  beaconLight.position.set(0.55,2.62,0.30);
+  truck.add(beaconLight);
+
+  truck.add(cyl(0.045,0.05, M.lens, 0.68,1.80, 0.44, 0, Math.PI/2));
+  truck.add(cyl(0.045,0.05, M.lens, 0.68,1.80,-0.44, 0, Math.PI/2));
+  truck.add(box(0.02,0.07,0.09, M.red, -1.372,1.08, 0.40));
+  truck.add(box(0.02,0.07,0.09, M.red, -1.372,1.08,-0.40));
+
+  truck.add(box(0.12,2.05,0.10, M.steel, 1.20,1.30, 0.32));
+  truck.add(box(0.12,2.05,0.10, M.steel, 1.20,1.30,-0.32));
+  truck.add(box(0.12,0.12,0.74, M.steel, 1.20,2.26,0));
+  truck.add(box(0.14,0.16,0.74, M.steel, 1.20,0.34,0));
+
+  const chainGeo = new THREE.BoxGeometry(0.035,1,0.05);
+  chainGeo.translate(0,-0.5,0);
+  const chainL = new THREE.Mesh(chainGeo, M.dark);
+  const chainR = new THREE.Mesh(chainGeo, M.dark);
+  chainL.position.set(1.20,2.20, 0.26);
+  chainR.position.set(1.20,2.20,-0.26);
+  chainL.castShadow = chainR.castShadow = true;
+  truck.add(chainL, chainR);
+
+  const carriage = new THREE.Group();
+  carriage.position.y = 0.34;
+  truck.add(carriage);
+  carriage.add(box(0.08,0.55,0.88, M.steel, 1.32,0,0));
+  carriage.add(box(0.07,0.10,0.74, M.dark,  1.32,0.30,0));
+  [0.24,-0.24].forEach(z=>{
+    carriage.add(box(0.08,0.42,0.14, M.dark, 1.40,-0.05,z));
+    carriage.add(box(1.15,0.06,0.14, M.dark, 2.02,-0.27,z));
+  });
+
+  carriage.add(box(1.05,0.045,0.72, M.wood, 2.15,-0.215,0));
+  [-0.28,0,0.28].forEach(z=> carriage.add(box(1.05,0.028,0.13, M.woodD, 2.15,-0.178,z)));
+  carriage.add(box(0.95,0.72,0.70, M.wood, 2.15,0.17,0));
+  [[0.45,0.325],[0.45,-0.325],[-0.45,0.325],[-0.45,-0.325]].forEach(([x,z])=>
+    carriage.add(box(0.05,0.72,0.05, M.woodD, 2.15+x,0.17,z)));
+  carriage.add(box(0.99,0.03,0.74, M.woodD, 2.15,0.515,0));
+  carriage.add(box(0.97,0.045,0.02, M.band, 2.15,0.12, 0.361));
+  carriage.add(box(0.97,0.045,0.02, M.band, 2.15,0.12,-0.361));
+  carriage.add(box(0.02,0.045,0.72, M.band, 2.635,0.12,0));
+  carriage.add(box(0.02,0.045,0.72, M.band, 1.665,0.12,0));
+
+  [0.58,-0.58].forEach(z=>{
+    truck.add(cyl(0.30,0.20, M.tire,  0.70,0.30,z, Math.PI/2));
+    truck.add(cyl(0.145,0.215, M.yellow, 0.70,0.30,z, Math.PI/2));
+    truck.add(box(0.55,0.05,0.28, M.yellowDeep, 0.70,0.67,z));
+    truck.add(cyl(0.21,0.16, M.tire, -1.08,0.21,z*0.95, Math.PI/2));
+    truck.add(cyl(0.10,0.17, M.yellow,-1.08,0.21,z*0.95, Math.PI/2));
+  });
+
+  const labelMat = new THREE.MeshBasicMaterial({ map: labelTexture() });
+  const labelGeo = new THREE.PlaneGeometry(0.34,0.18);
+  const lab1 = new THREE.Mesh(labelGeo, labelMat); lab1.position.set(-1.16,0.85, 0.523);
+  const lab2 = new THREE.Mesh(labelGeo, labelMat); lab2.position.set(-1.16,0.85,-0.523); lab2.rotation.y = Math.PI;
+  truck.add(lab1, lab2);
+  [-0.14,0,0.14].forEach(z=> truck.add(box(0.02,0.05,0.06, M.green, -1.382,1.02,z)));
+  const chevTex = stripeTex.clone(); chevTex.repeat.set(1,2); chevTex.needsUpdate = true;
+  const chev = new THREE.Mesh(new THREE.PlaneGeometry(0.34,0.5), new THREE.MeshBasicMaterial({ map: chevTex }));
+  chev.position.set(-1.385,0.62,0); chev.rotation.y = -Math.PI/2;
+  truck.add(chev);
+
+  let az = 0.55, pol = 1.12, rad = 7.8;
+  let tAz = az, tPol = pol, tRad = rad;
+  let fitRad = 7.8;
+  let auto = !reduceMotion, lastPointer = 0, dragging = false, px = 0, py = 0;
+  const el = renderer.domElement;
+  const clamp = THREE.MathUtils.clamp;
+  const hint = document.getElementById('hint');
+
+  el.addEventListener('pointerdown', e=>{
+    dragging = true; px = e.clientX; py = e.clientY;
+    el.setPointerCapture(e.pointerId);
+    lastPointer = performance.now();
+    if(hint) hint.classList.add('hide');
+  });
+  el.addEventListener('pointermove', e=>{
+    if(!dragging) return;
+    tAz  -= (e.clientX - px) * 0.0055;
+    tPol  = clamp(tPol - (e.clientY - py) * 0.004, 0.45, 1.48);
+    px = e.clientX; py = e.clientY;
+    lastPointer = performance.now();
+  });
+  ['pointerup','pointercancel'].forEach(t=> el.addEventListener(t, ()=>{
+    dragging = false; lastPointer = performance.now();
+  }));
+
+  const zin = document.getElementById('zin'), zout = document.getElementById('zout');
+  const zoomClamp = v => clamp(v, fitRad * 0.62, Math.min(fitRad * 1.35, 11));
+  zin.addEventListener('click',  ()=>{ tRad = zoomClamp(tRad - 1.1); lastPointer = performance.now(); });
+  zout.addEventListener('click', ()=>{ tRad = zoomClamp(tRad + 1.1); lastPointer = performance.now(); });
+
+  const rotBtn = document.getElementById('rotBtn');
+  rotBtn.classList.toggle('on', auto);
+  rotBtn.setAttribute('aria-pressed', auto);
+  rotBtn.addEventListener('click', ()=>{
+    auto = !auto;
+    rotBtn.classList.toggle('on', auto);
+    rotBtn.setAttribute('aria-pressed', auto);
+  });
+
+  const lift = { active:false, t:0 };
+  const LIFT_UP = 1.6, LIFT_HOLD = 0.9, LIFT_DOWN = 1.8, LIFT_MAX = 1.35;
+  const ease = p => p < .5 ? 4*p*p*p : 1 - Math.pow(-2*p + 2, 3)/2;
+  function startLift(){ if(!lift.active){ lift.active = true; lift.t = 0; } }
+  document.getElementById('liftBtn').addEventListener('click', startLift);
+
+  if(!reduceMotion){
+    setTimeout(()=>{
+      if('IntersectionObserver' in window){
+        const lio = new IntersectionObserver(en=>{
+          if(en[0].isIntersecting){ startLift(); lio.disconnect(); }
+        }, {threshold:.35});
+        lio.observe(container);
+      } else startLift();
+    }, 1500);
+  }
+
+  setTimeout(()=>{ if(hint) hint.classList.add('hide'); }, 7000);
+
+  let lastW = 0;
+  function resize(){
+    const w = container.clientWidth, h = container.clientHeight;
+    if(!w || !h) return;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.fov = camera.aspect < 0.9 ? 38 : 33;
+    camera.updateProjectionMatrix();
+    if(Math.abs(w - lastW) > 2){
+      const t = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+      const fitH = (3.2 / 2) / t + 0.35;
+      const fitW = (4.4 / 2) / (t * camera.aspect) + 0.35;
+      fitRad = clamp(Math.max(fitH, fitW), 5.4, 10.8);
+      tRad = rad = fitRad;
+      if(scene.fog){ scene.fog.near = fitRad * 1.7; scene.fog.far = fitRad * 2.8; }
+      lastW = w;
+    }
+  }
+  new ResizeObserver(resize).observe(container);
+  window.addEventListener('orientationchange', ()=> setTimeout(resize, 120));
+  resize();
+
+  let stageVisible = true;
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(en=>{ stageVisible = en[0].isIntersecting; }, {rootMargin:'80px'}).observe(container);
+  }
+
+  let last = performance.now(), fbDone = false;
+  function tick(now){
+    requestAnimationFrame(tick);
+    const dt = Math.min((now - last)/1000, 0.05); last = now;
+
+    if(!stageVisible || document.hidden) return;
+    if(!fbDone && fallback){ fallback.remove(); fbDone = true; }
+
+    if(auto && !dragging && now - lastPointer > 2500) tAz += dt * 0.14;
+    const k = 1 - Math.pow(0.001, dt);
+    az  += (tAz  - az ) * k;
+    pol += (tPol - pol) * k;
+    rad += (tRad - rad) * k;
+    const sp = Math.sin(pol), cp = Math.cos(pol);
+    camera.position.set(
+      target.x + rad * sp * Math.sin(az),
+      target.y + rad * cp,
+      target.z + rad * sp * Math.cos(az)
+    );
+    camera.lookAt(target);
+
+    if(reduceMotion){
+      M.beacon.emissiveIntensity = 1.4;
+      beaconLight.intensity = 0;
+      M.green.emissiveIntensity = 1.2;
+    } else {
+      const b = Math.sin(now * 0.008) * 0.5 + 0.5;
+      M.beacon.emissiveIntensity = 0.25 + b*b * 2.4;
+      beaconLight.intensity = b*b * 9;
+      M.green.emissiveIntensity = 1.2 + Math.sin(now * 0.003) * 0.5;
+    }
+
+    if(lift.active){
+      lift.t += dt;
+      const t = lift.t;
+      let h = 0;
+      if(t < LIFT_UP)                       h = ease(t / LIFT_UP);
+      else if(t < LIFT_UP + LIFT_HOLD)      h = 1;
+      else if(t < LIFT_UP + LIFT_HOLD + LIFT_DOWN) h = 1 - ease((t - LIFT_UP - LIFT_HOLD) / LIFT_DOWN);
+      else lift.active = false;
+      carriage.position.y = 0.34 + h * LIFT_MAX;
+    }
+    const len = clamp(2.20 - (carriage.position.y + 0.36), 0.06, 2.0);
+    chainL.scale.y = chainR.scale.y = len;
+
+    renderer.render(scene, camera);
+  }
+  requestAnimationFrame(tick);
+
+}catch(err){
+  console.warn('3D scene unavailable:', err);
+  if(fallback) fallback.textContent = '3D PREVIEW UNAVAILABLE';
+}
+</script>
+</body>
+</html>
