@@ -6,6 +6,8 @@ Website for an electric forklift business: sales, service, rentals, batteries an
 
 ![VoltLift hero, "Heavy lifting, zero emissions", beside an interactive 3D forklift](docs/screenshot.jpg)
 
+![Animated demo: scrolling through the VoltLift site](docs/demo.gif)
+
 ## Built with
 
 A single `index.html` with HTML, CSS, JavaScript and Three.js (from a CDN).
